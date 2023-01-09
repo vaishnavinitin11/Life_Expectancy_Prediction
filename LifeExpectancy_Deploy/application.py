@@ -3,8 +3,9 @@ import pandas as pd
 import pickle
 
 app=Flask(__name__)
-
-model=pickle.load(open('/Users/vaishnaviuttarkar/Life Expectany/Life_Expectancy_Model/LifeExpectancy_Deploy/RandomRegressionModel.pkl','rb'))
+file=open('RandomRegressionModel.pkl','rb')
+rr=pickle.load(file)
+file.close()
 life=pd.read_csv('/Users/vaishnaviuttarkar/Life Expectany/Life_Expectancy_Model/LifeExpectancy_Deploy/CleanedLifeExpectancy.csv')
 
 @app.route('/')
@@ -57,7 +58,9 @@ def predict():
     incomeCompositionOfResources=float((request.form.get('incomeCompositionOfResources')))
     schooling=float((request.form.get('schooling')))
 
-    prediction=model.predict([[country,year,status,adultMortality,infantdeaths,alcohol,percentageExpenditure,hepatitisB,Measles,bmi,underFiveDeaths,polio,totalExpenditure,diphtheria,hivAids,gdp,population,thinness1_19yrs,thinness5_9yrs,incomeCompositionOfResources,schooling]])
+
+    inputfeatures=[country,year,status,adultMortality,infantdeaths,alcohol,percentageExpenditure,hepatitisB,Measles,bmi,underFiveDeaths,polio,totalExpenditure,diphtheria,hivAids,gdp,population,thinness1_19yrs,thinness5_9yrs,incomeCompositionOfResources,schooling]
+    prediction=rr.predict([inputfeatures])
 
     print(prediction)
     return ''
@@ -65,3 +68,29 @@ def predict():
 
 if __name__=='__main__':
     app.run(debug=True)
+
+    #Label Encoding
+    from sklearn.preprocessing import LabelEncoder
+    le=LabelEncoder()
+    life['Country']=le.fit_transform(life['Country'])
+    life['Status']=le.fit_transform(life['Status'])
+
+
+    # Separating dependent and Independent variables
+    X=life.drop(columns='Lifeexpectancy')
+    y=life['Lifeexpectancy']
+
+    # Performing train-test split
+    from sklearn.model_selection import train_test_split
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+
+
+    #Fitting algo
+    from sklearn.ensemble import RandomForestRegressor
+    rr=RandomForestRegressor ()
+    rr.fit(X_train,y_train)
+
+    #Pickling 
+    file=open('RandomRegressionModel.pkl','wb')
+    pickle.dump(rr,file)
+    file.close()

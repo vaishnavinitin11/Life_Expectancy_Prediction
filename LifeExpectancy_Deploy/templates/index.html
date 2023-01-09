@@ -176,7 +176,7 @@
             xhr.open('POST', '/predict', true); 
             document.getElementById('prediction').innerHTML='Wait! Predicting Life Expectancy...';
             
-            xhr.onreadyStateChange= function()
+            xhr.onreadystatechange= function()
             {
                 if(xhr.readyState == XMLHttpRequest.DONE)
                 {
