@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="#" accept="utf-8">
+                    <form method="post"  accept="utf-8">
 
                         <div class="col-15 form-group" style="text-align: center;">
                             <label><b>Select Country: </b></label>
@@ -68,7 +68,7 @@
 
                         <div class="col-15 form-group" style="text-align: center;">
                             <label><b>Enter Percentage Expenditure: </b></label>
-                            <input class="form-control" type="text" id="precentageExpenditure" name="precentageExpenditure" placeholder="Enter Percentage Expenditure of a Country">
+                            <input class="form-control" type="text" id="percentageExpenditure" name="percentageExpenditure" placeholder="Enter Percentage Expenditure of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
@@ -78,7 +78,7 @@
 
                         <div class="col-15 form-group" style="text-align: center;">
                             <label><b>Enter Measles: </b></label>
-                            <input class="form-control" type="text" id="Measles" name="Measles" placeholder="Enter Measles">
+                            <input class="form-control" type="text" id="Measles" name="measles" placeholder="Enter Measles">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
@@ -145,6 +145,14 @@
                             <button class="btn btn-primary form-control" onclick="send_data()">Predict Life Expectancy</button>
                         </div>
                     </form>
+                    <br>
+
+                    <div class="row" style="text-align: center;">
+                        <div class="col-17" >
+                            <h3><span id="prediction"></span></h3>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -160,6 +168,26 @@
         function send_data()
         {
             document.querySelector('form').addEventListener('submit',form_handler);
+            
+            var fd = new FormData(document.querySelector('form'));
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/predict', true); 
+            document.getElementById('prediction').innerHTML='Wait! Predicting Life Expectancy...';
+            
+            xhr.onreadyStateChange= function()
+            {
+                if(xhr.readyState == XMLHttpRequest.DONE)
+                {
+                    document.getElementById('prediction').innerHTML='Prediction: '+ xhr.responseText;
+
+                }
+            }
+
+            xhr.onload=function(){};
+
+            xhr.send(fd);
             //supress
             //send and receive prediction 
         }
