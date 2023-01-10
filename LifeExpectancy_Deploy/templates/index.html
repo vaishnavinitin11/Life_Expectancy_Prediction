@@ -1,4 +1,6 @@
-<!doctype html>
+ <!-- Landing page  -->
+
+ <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -19,7 +21,7 @@
   <body class="body-style">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Life Expectancy Predictor</a>
+          <a class="navbar-brand" href="/pred">Life Expectancy Predictor</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,141 +44,6 @@
                     <div class="col-12" style="text-align: center;">
                         <h1>Life Expectancy Predictor</h1>
                     </div>
-                </div>
-
-                <div class="card-body">
-                    <form action="/" method="POST"  accept-charset="utf-8" name="Modelform" style="color: black;font-family:'Times New Roman', Times, serif">
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="Country" class="form-label"><b>Select Country: </b></label>
-                            <select class="selectpicker form-control" id="Country" name="Country" required="1">
-
-                                <option selected>Which Country would you like to select?</option>
-                                <option value="0">Afghanistan</option>
-                                <option value="1">Albania</option>
-                                <option value="2">Angola</option>
-                            </select>
-                        </div>
-                        
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="Year" class="form-label">
-                                <b>Enter Year: </b>
-                            </label>
-                            <input class="form-control" type="text" id="Year" name="Year" placeholder="Enter Year">
-                        </div>
-                        
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="Status" class="form-label"><b>Select Status: </b></label>
-                            <select class="selectpicker form-control" id="Status" name="Status" required="1">
-                                
-                                <option selected>Is Country developed or developing?</option>
-                                <option value="0">Developed</option>
-                                <option value="1">Developing</option>
-                            </select>
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="AdultMortality" class="form-label"><b>Enter Adult Mortality of a Status: </b></label>
-                            <input class="form-control" type="text" id="AdultMortality" name="AdultMortality" placeholder="Enter adultMortality of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="infantdeaths" class="form-label"><b>Enter Infant Deaths in a Country: </b></label>
-                            <input class="form-control" type="text" id="infantdeaths" name="infantdeaths" placeholder="Enter Infant Deaths in a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="Alcohol" class="form-label"><b>Enter alcohol: </b></label>
-                            <input class="form-control" type="text" id="Alcohol" name="Alcohol" placeholder="Enter Alcohol Consumption">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="percentageexpenditure" class="form-label"><b>Enter Percentage Expenditure: </b></label>
-                            <input class="form-control" type="text" id="percentageexpenditure" name="percentageexpenditure" placeholder="Enter Percentage Expenditure of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="HepatitisB" class="form-label"><b>Enter Hepatitis B: </b></label>
-                            <input class="form-control" type="text" id="HepatitisB" name="HepatitisB" placeholder="Enter Hepatitis B">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="Measles" class="form-label"><b>Enter Measles: </b></label>
-                            <input class="form-control" type="text" id="Measles" name="Measles" placeholder="Enter Measles">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="BMI" class="form-label"><b>Enter BMI: </b></label>
-                            <input class="form-control" type="text" id="BMI" name="BMI" placeholder="Enter BMI of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="underFiveDeaths" class="form-label"><b>Enter how many Under Age Five Deaths in a Country: </b></label>
-                            <input class="form-control" type="text" id="underFiveDeaths" name="underFiveDeaths" placeholder="Enter how many Under Age Five Deaths in a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="polio" class="form-label" ><b>Enter Polio: </b></label>
-                            <input class="form-control" type="text" id="polio" name="polio" placeholder="Enter Polio">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="totalExpenditure" class="form-label"><b>Enter Total Expenditure of a Country: </b></label>
-                            <input class="form-control" type="text" id="totalExpenditure" name="totalExpenditure" placeholder="Enter Total Expenditure of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="diphtheria" class="form-label"><b>Enter Diphtheria: </b></label>
-                            <input class="form-control" type="text" id="diphtheria" name="diphtheria" placeholder="Enter Diphtheria">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="hivAids" class="form-label"><b>Enter HIV/AIDS: </b></label>
-                            <input class="form-control" type="text" id="hivAids" name="hivAids" placeholder="Enter HIV/AIDS">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="gdp" class="form-label"><b>Enter GDP of a Country: </b></label>
-                            <input class="form-control" type="text" id="gdp" name="gdp" placeholder="Enter GDP of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="population" class="form-label"><b>Enter Population of a Country: </b></label>
-                            <input class="form-control" type="text" id="population" name="population" placeholder="Enter Population of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="thinness1_19yrs" class="form-label"><b>Enter Thinness 1-19 years of a Country: </b></label>
-                            <input class="form-control" type="text" id="thinness1_19yrs" name="thinness1_19yrs" placeholder="Enter Thinness 1-19 years of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="thinness5_9yrs" class="form-label"><b>Enter Thinness 5-9 years of a Country: </b></label>
-                            <input class="form-control" type="text" id="thinness5_9yrs" name="thinness5_9yrs" placeholder="Enter Thinness 5-9 years of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="incomeCompositionOfResources" class="form-label"><b>Enter Income Composition Of Resources of a Country: </b></label>
-                            <input class="form-control" type="text" id="incomeCompositionOfResources" name="incomeCompositionOfResources" placeholder="Enter Income Composition Of Resources of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <label for="schooling" class="form-label"><b>Enter Schooling of a Country: </b></label>
-                            <input class="form-control" type="text" id="schooling" name="schooling" placeholder="Enter Schooling of a Country">
-                        </div>
-
-                        <div class="col-15 form-group" style="text-align: center;">
-                            <button class="btn btn-primary form-control" onclick="send_data()">Predict Life Expectancy</button>
-                        </div>
-                    </form>
-                    <br>
-
-                    <!-- <div class="row" style="text-align: center;">
-                        <div class="col-17" style="text-align: center;">
-                            <h3><span id="prediction"></span></h3>
-                        </div>
-                    </div> -->
-
                 </div>
 
             </div>

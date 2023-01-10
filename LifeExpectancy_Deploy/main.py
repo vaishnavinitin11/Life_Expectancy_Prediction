@@ -14,11 +14,11 @@ file.close()
 #     Status = sorted(life['Status'].unique())
 #     return render_template('index.html', Countries= Countries, Status=Status)
 
-# @app.route("/",methods=["GET","POST"])
-# def hello_world():
-#     return render_template('index.html')
+@app.route("/",methods=["GET","POST"])
+def hello_world():
+    return render_template('index.html')
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/pred',methods=['GET','POST'])
 def predict():
     if request.method=='POST':
         mydict=request.form
@@ -51,7 +51,7 @@ def predict():
         print(prediction)
 
         return render_template('show.html',inf=prediction)
-    return render_template('index.html')
+    return render_template('index1.html')
 
 
 if __name__=='__main__':
