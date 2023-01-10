@@ -8,136 +8,160 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- <style> 
+        body {
+          background-image: url("file:///Users/vaishnaviuttarkar/Downloads/nasa.jpg");
+          /* background-color: #cccccc; */
+        }
+    </style> -->
     <title>Life Expectancy Predictor</title>
   </head>
-  <body class="bg-dark">
+  <body class="body-style">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Life Expectancy Predictor</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+    
+    
+          </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="card mt-50" style="width: 100%; height: 100%">
 
-                <div class="card-header">
+                <div class="card-header" style="font-family: 'Times New Roman', Times, serif;">
                     <div class="col-12" style="text-align: center;">
                         <h1>Life Expectancy Predictor</h1>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <form method="post"  accept="utf-8">
+                    <form action="/" method="POST"  accept-charset="utf-8" name="Modelform" style="color: black;font-family:'Times New Roman', Times, serif">
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Select Country: </b></label>
-                            <select class="selectpicker form-control" id="country" name="country" required="1">
+                            <label for="Country" class="form-label"><b>Select Country: </b></label>
+                            <select class="selectpicker form-control" id="Country" name="Country" required="1">
 
-                                {% for country in Countries %}
-
-                                <option value="{{ country }}">{{ country }}</option>
-                                {% endfor %}
+                                <option selected>Which Country would you like to select?</option>
+                                <option value="0">Afghanistan</option>
+                                <option value="1">Albania</option>
+                                <option value="2">Angola</option>
                             </select>
                         </div>
-
+                        
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Year: </b></label>
-                            <input class="form-control" type="text" id="year" name="year" placeholder="Enter Year">
+                            <label for="Year" class="form-label">
+                                <b>Enter Year: </b>
+                            </label>
+                            <input class="form-control" type="text" id="Year" name="Year" placeholder="Enter Year">
                         </div>
-
+                        
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Select Status: </b></label>
-                            <select class="selectpicker form-control" id="status" name="status" required="1">
+                            <label for="Status" class="form-label"><b>Select Status: </b></label>
+                            <select class="selectpicker form-control" id="Status" name="Status" required="1">
                                 
-                                {% for stat in Status%}
-
-                                <option value="{{stat}}">{{stat}}</option>
-                                {% endfor %}
+                                <option selected>Is Country developed or developing?</option>
+                                <option value="0">Developed</option>
+                                <option value="1">Developing</option>
                             </select>
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Adult Mortality of a Country: </b></label>
-                            <input class="form-control" type="text" id="adultMortality" name="adultMortality" placeholder="Enter adultMortality of a Country">
+                            <label for="AdultMortality" class="form-label"><b>Enter Adult Mortality of a Status: </b></label>
+                            <input class="form-control" type="text" id="AdultMortality" name="AdultMortality" placeholder="Enter adultMortality of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Infant Deaths in a Country: </b></label>
+                            <label for="infantdeaths" class="form-label"><b>Enter Infant Deaths in a Country: </b></label>
                             <input class="form-control" type="text" id="infantdeaths" name="infantdeaths" placeholder="Enter Infant Deaths in a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter alcohol: </b></label>
-                            <input class="form-control" type="text" id="alcohol" name="alcohol" placeholder="Enter Alcohol Consumption">
+                            <label for="Alcohol" class="form-label"><b>Enter alcohol: </b></label>
+                            <input class="form-control" type="text" id="Alcohol" name="Alcohol" placeholder="Enter Alcohol Consumption">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Percentage Expenditure: </b></label>
-                            <input class="form-control" type="text" id="percentageExpenditure" name="percentageExpenditure" placeholder="Enter Percentage Expenditure of a Country">
+                            <label for="percentageexpenditure" class="form-label"><b>Enter Percentage Expenditure: </b></label>
+                            <input class="form-control" type="text" id="percentageexpenditure" name="percentageexpenditure" placeholder="Enter Percentage Expenditure of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Hepatitis B: </b></label>
-                            <input class="form-control" type="text" id="hepatitisB" name="hepatitisB" placeholder="Enter Hepatitis B">
+                            <label for="HepatitisB" class="form-label"><b>Enter Hepatitis B: </b></label>
+                            <input class="form-control" type="text" id="HepatitisB" name="HepatitisB" placeholder="Enter Hepatitis B">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Measles: </b></label>
-                            <input class="form-control" type="text" id="Measles" name="measles" placeholder="Enter Measles">
+                            <label for="Measles" class="form-label"><b>Enter Measles: </b></label>
+                            <input class="form-control" type="text" id="Measles" name="Measles" placeholder="Enter Measles">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter BMI: </b></label>
-                            <input class="form-control" type="text" id="bmi" name="bmi" placeholder="Enter BMI of a Country">
+                            <label for="BMI" class="form-label"><b>Enter BMI: </b></label>
+                            <input class="form-control" type="text" id="BMI" name="BMI" placeholder="Enter BMI of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter how many Under Age Five Deaths in a Country: </b></label>
+                            <label for="underFiveDeaths" class="form-label"><b>Enter how many Under Age Five Deaths in a Country: </b></label>
                             <input class="form-control" type="text" id="underFiveDeaths" name="underFiveDeaths" placeholder="Enter how many Under Age Five Deaths in a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Polio: </b></label>
+                            <label for="polio" class="form-label" ><b>Enter Polio: </b></label>
                             <input class="form-control" type="text" id="polio" name="polio" placeholder="Enter Polio">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Total Expenditure of a Country: </b></label>
+                            <label for="totalExpenditure" class="form-label"><b>Enter Total Expenditure of a Country: </b></label>
                             <input class="form-control" type="text" id="totalExpenditure" name="totalExpenditure" placeholder="Enter Total Expenditure of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Diphtheria: </b></label>
+                            <label for="diphtheria" class="form-label"><b>Enter Diphtheria: </b></label>
                             <input class="form-control" type="text" id="diphtheria" name="diphtheria" placeholder="Enter Diphtheria">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter HIV/AIDS: </b></label>
+                            <label for="hivAids" class="form-label"><b>Enter HIV/AIDS: </b></label>
                             <input class="form-control" type="text" id="hivAids" name="hivAids" placeholder="Enter HIV/AIDS">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter GDP of a Country: </b></label>
+                            <label for="gdp" class="form-label"><b>Enter GDP of a Country: </b></label>
                             <input class="form-control" type="text" id="gdp" name="gdp" placeholder="Enter GDP of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Population of a Country: </b></label>
+                            <label for="population" class="form-label"><b>Enter Population of a Country: </b></label>
                             <input class="form-control" type="text" id="population" name="population" placeholder="Enter Population of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Thinness 1-19 years of a Country: </b></label>
+                            <label for="thinness1_19yrs" class="form-label"><b>Enter Thinness 1-19 years of a Country: </b></label>
                             <input class="form-control" type="text" id="thinness1_19yrs" name="thinness1_19yrs" placeholder="Enter Thinness 1-19 years of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Thinness 5-9 years of a Country: </b></label>
+                            <label for="thinness5_9yrs" class="form-label"><b>Enter Thinness 5-9 years of a Country: </b></label>
                             <input class="form-control" type="text" id="thinness5_9yrs" name="thinness5_9yrs" placeholder="Enter Thinness 5-9 years of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Income Composition Of Resources of a Country: </b></label>
+                            <label for="incomeCompositionOfResources" class="form-label"><b>Enter Income Composition Of Resources of a Country: </b></label>
                             <input class="form-control" type="text" id="incomeCompositionOfResources" name="incomeCompositionOfResources" placeholder="Enter Income Composition Of Resources of a Country">
                         </div>
 
                         <div class="col-15 form-group" style="text-align: center;">
-                            <label><b>Enter Schooling of a Country: </b></label>
+                            <label for="schooling" class="form-label"><b>Enter Schooling of a Country: </b></label>
                             <input class="form-control" type="text" id="schooling" name="schooling" placeholder="Enter Schooling of a Country">
                         </div>
 
@@ -147,11 +171,11 @@
                     </form>
                     <br>
 
-                    <div class="row" style="text-align: center;">
-                        <div class="col-17" >
+                    <!-- <div class="row" style="text-align: center;">
+                        <div class="col-17" style="text-align: center;">
                             <h3><span id="prediction"></span></h3>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -159,7 +183,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         function form_handler(event)
         {
             event.preventDefault();
@@ -191,7 +215,7 @@
             //supress
             //send and receive prediction 
         }
-    </script>
+    </script> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

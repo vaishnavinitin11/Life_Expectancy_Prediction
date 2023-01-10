@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import pickle
 
 
@@ -6,6 +7,8 @@ if __name__=='__main__':
 
     #importing Cleaned Dataset
     life=pd.read_csv('CleanedLifeExpectancy.csv')
+
+    # life=life[['Country','Year','Status','AdultMortality','infantdeaths','Alcohol','percentageexpenditure','HepatitisB','Measles','BMI',underFiveDeaths,polio,totalExpenditure,diphtheria,hivAids,gdp,population,thinness1_19yrs,thinness5_9yrs,incomeCompositionOfResources,schooling]]
 
     #Label Encoding
     from sklearn.preprocessing import LabelEncoder
@@ -25,7 +28,7 @@ if __name__=='__main__':
 
     #Fitting algo
     from sklearn.ensemble import RandomForestRegressor
-    rr=RandomForestRegressor ()
+    rr=RandomForestRegressor()
     rr.fit(X_train,y_train)
 
     #Pickling 

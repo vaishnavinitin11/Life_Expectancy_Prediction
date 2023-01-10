@@ -8,31 +8,16 @@ rr=pickle.load(file)
 file.close()
 life=pd.read_csv('/Users/vaishnaviuttarkar/Life Expectany/Life_Expectancy_Model/LifeExpectancy_Deploy/CleanedLifeExpectancy.csv')
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
-    Countries = sorted(life['Country'].unique())
+    countries = sorted(life['Country'].unique())
     # year = sorted(life['Country'].unique())
     Status = sorted(life['Status'].unique())
     # adultMortality
-    # infantdeaths
-    # alcohol
-    # precentageExpenditure
-    # hepatitisB
-    # Measles
-    # bmi
-    # underFiveDeaths
-    # polio
-    # totalExpenditure
-    # diphtheria
-    # hivAids
-    # gdp
-    # population
-    # thinness1_19yrs
-    # thinness5_9yrs
-    # incomeCompositionOfResources
-    # schooling
+    # infantdeath
 
-    return render_template('index.html', Countries= Countries, Status=Status)
+    countries.insert(0,'Select Country')
+    return render_template('index.html', countries= countries, Status=Status)
 
 @app.route('/predict',methods=['POST'])
 def predict():
